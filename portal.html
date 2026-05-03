@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Portal</title>
+
+<style>
+body{
+margin:0;
+background:#000;
+color:white;
+font-family:Arial;
+overflow:hidden;
+}
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
+.center{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.card{
+background:rgba(255,255,255,0.06);
+backdrop-filter:blur(18px);
+padding:35px;
+border-radius:18px;
+text-align:center;
+box-shadow:0 0 30px rgba(127,0,255,0.2);
+}
+
+button{
+margin:10px;
+padding:12px 20px;
+border:none;
+border-radius:12px;
+background:linear-gradient(90deg,#7f00ff,#00c6ff);
+color:white;
+cursor:pointer;
+transition:0.2s;
+}
+
+button:hover{
+transform:scale(1.05);
+box-shadow:0 0 12px #7f00ff;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="p"></canvas>
+
+<div class="center">
+  <div class="card">
+      <h2>📌 Portal</h2>
+
+          <button onclick="goLogin()">🔐 Log In</button>
+
+              <button style="opacity:0.4;cursor:not-allowed;">
+                    📊 Dashboard (off)
+                        </button>
+                          </div>
+                          </div>
+
+                          <script>
+                          function goLogin(){
+                            window.location.href = "/confirm-login";
+                            }
+                            </script>
+
+                            <script src="/particles.js"></script>
+
+                            </body>
+</html>
