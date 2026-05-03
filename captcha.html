@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Security Check</title>
+
+<style>
+body{
+margin:0;
+background:#000;
+color:white;
+font-family:Arial;
+overflow:hidden;
+}
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
+.center{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.card{
+background:rgba(255,255,255,0.06);
+backdrop-filter:blur(18px);
+padding:40px;
+border-radius:18px;
+text-align:center;
+}
+
+/* CAPTCHA */
+.captcha{
+font-size:42px;
+letter-spacing:6px;
+filter:blur(8px);
+transition:0.5s;
+margin:20px 0;
+}
+
+.show{
+filter:blur(0px);
+}
+
+input{
+padding:10px;
+border-radius:10px;
+border:none;
+margin-top:10px;
+}
+
+button{
+margin-top:15px;
+padding:12px 20px;
+border:none;
+border-radius:12px;
+background:linear-gradient(90deg,#7f00ff,#00c6ff);
+color:white;
+cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="p"></canvas>
+
+<div class="center">
+  <div class="card">
+      <h2>🔐 Verificación de seguridad</h2>
+          <p>Completa el código para continuar</p>
+
+              <div id="captchaText" class="captcha">----</div>
+
+                  <input id="input" placeholder="Ingresa el código">
+                      <br>
+                          <button onclick="verify()">Verificar</button>
+                            </div>
+                            </div>
+
+                            <script>
+                            // 🧠 pedir captcha al backend
+                            let realCode = "";
+
+                            fetch("/captcha-data")
+                              .then(r => r.json())
+                                .then(data => {
+                                    realCode = data.code;
+
+                                        const el = document.getElementById("captchaText");
+                                            el.textContent = realCode;
+
+                                                setTimeout(() => {
+                                                      el.classList.add("show");
+                                                          }, 1000);
+                                                            });
+
+                                                            // ✅ verificar
+                                                            function verify(){
+                                                              fetch("/verify", {
+                                                                  method: "POST",
+                                                                      headers: {"Content-Type":"application/json"},
+                                                                          body: JSON.stringify({
+                                                                                answer: document.getElementById("input").value
+                                                                                    })
+                                                                                      })
+                                                                                        .then(r=>r.json())
+                                                                                          .then(d=>{
+                                                                                              if(d.success){
+                                                                                                    alert("✅ Verificado");
+                                                                                                        }else{
+                                                                                                              alert("❌ Código incorrecto");
+                                                                                                                  }
+                                                                                                                    });
+                                                                                                                    }
+                                                                                                                    </script>
+
+                                                                                                                    <script src="/particles.js"></script>
+
+                                                                                                                    </body>
+  </html>
