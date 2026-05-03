@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Security Check</title>
+
+<style>
+body{
+margin:0;
+background:#000;
+color:white;
+font-family:Arial;
+overflow:hidden;
+}
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
+.center{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.card{
+background:rgba(255,255,255,0.06);
+backdrop-filter:blur(20px);
+padding:40px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 0 40px rgba(127,0,255,0.2);
+animation:fade 1s ease;
+}
+
+button{
+padding:14px 28px;
+border:none;
+border-radius:14px;
+background:linear-gradient(90deg,#7f00ff,#00c6ff);
+color:white;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+box-shadow:0 0 15px #7f00ff;
+}
+
+@keyframes fade{
+from{opacity:0; transform:translateY(20px);}
+to{opacity:1; transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="p"></canvas>
+
+<div class="center">
+  <div class="card">
+      <h2>🔐 Verificación de seguridad</h2>
+          <p>Protección automática anti-bot</p>
+
+              <button onclick="start()">Verificar</button>
+                </div>
+                </div>
+
+                <script>
+                function start(){
+                  document.body.style.opacity="0.6";
+                    setTimeout(()=>{
+                        window.location.href="/captcha";
+                          },500);
+                          }
+                          </script>
+
+                          <script src="/particles.js"></script>
+
+                          </body>
+</html>
